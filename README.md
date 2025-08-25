@@ -1,8 +1,6 @@
 # DeneyapKartBLE
 
-ESP32 ailesi (ESP32, ESP32-C3, ESP32-S3) üzerinde hem klasik Bluedroid hem de NimBLE yığınlarını otomatik seçerek çalışan hafif ve tek tip (unified) BLE haberleşme kütüphanesi. Notify (TX) + Write/WriteNR (RX) karakteristik çifti ile basit, düşük gecikmeli, seri benzeri ikili veya metin veri aktarımı sağlar.
-
-> Eski isimlerle uyumluluk: Daha önce `DeneyapBLE` veya ilk prototip `DeneyapUnifiedBLE` kullanan projeler sorunsuz derlenmeye devam eder (alias başlıklar bırakıldı). Yeni geliştirme için bu depodaki `#include <DeneyapKartBLE.h>` kullanılmalıdır.
+Deneyap Kartlar ve ESP32 ailesi (ESP32, ESP32-C3, ESP32-S3) üzerinde hem klasik Bluedroid hem de NimBLE yığınlarını otomatik seçerek çalışan hafif ve tek tip (unified) BLE haberleşme kütüphanesi. Notify (TX) + Write/WriteNR (RX) karakteristik çifti ile basit, düşük gecikmeli, seri benzeri ikili veya metin veri aktarımı sağlar.
 
 ---
 ## ✨ Özellikler
@@ -27,12 +25,6 @@ Host (telefon / PC) RX karakteristiğine yazar, kütüphane veriyi callback ile 
 1. Bu depoyu ZIP olarak indirin veya klonlayın.
 2. Klasörü (adı `DeneyapKartBLE` olacak şekilde) `Documents/Arduino/libraries/` altına yerleştirin.
 3. IDE'yi yeniden başlatın. Örnekler menüsünde `DeneyapKartBLE` görünecektir.
-
-### PlatformIO
-Şimdilik registry girişi yok. `lib_deps` kullanmak yerine projeye altmodül olarak ekleyebilirsiniz:
-```
-git submodule add https://github.com/<kullanıcı>/DeneyapKartBLE lib/DeneyapKartBLE
-```
 
 ## 🚀 Hızlı Başlangıç
 ```cpp
@@ -100,16 +92,6 @@ void loop(){ /* uygulama işiniz */ }
 - Bağlandıktan hemen sonra `printInfo()` çağırarak MTU ve UUID doğrulayıp host uygulamanızda enable notifications yapın.
 - Veri gelmiyorsa: (1) RX karakteristiğine WRITE yapıldığından emin olun. (2) Notify enable edilmedi ise TX görünmez. (3) Satır modu açıksa '\n' göndermeyi unutmayın.
 
-## 🗺 Yol Haritası (Roadmap)
-- [ ] Basit komut dispatcher (anahtar → fonksiyon eşleme)
-- [ ] Opsiyonel güvenlik / pairing
-- [ ] Akış bazlı buffer limitleri & geri basınç mekanizması
-- [ ] OTA / daha büyük veri örneği
-
-## ♻️ Geriye Dönük Uyumluluk
-Eski projeler:
-- `#include <DeneyapBLE.h>` devam eder (uyumluluk başlığı yeni koda yönlendirir).
-- Namespace alias: `DeneyapBLE::Core` == `DeneyapKartBLE::Core`.
 
 ## ❓ SSS
 **Veri gelmiyor, neden?** Genellikle notify enable edilmemiştir veya line mode açıkken '\n' göndermiyorsunuzdur.
@@ -117,7 +99,7 @@ Eski projeler:
 **MTU neden 23 görünüyor?** Bazı host uygulamaları (özellikle iOS) negotiation yapmadan kalabilir; NimBLE ile manuel `cfg.mtu` ayarlamayı deneyin.
 
 ## 📄 Lisans
-Lisans metni henüz eklenmedi. Öneri: MIT. (Eklemek için `LICENSE` dosyası oluşturun.)
+MIT
 
 ---
 Herhangi bir ek özellik isteğiniz varsa issue açın veya katkıda bulunun.
